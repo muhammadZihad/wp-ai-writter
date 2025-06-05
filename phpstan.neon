@@ -1,0 +1,12 @@
+parameters:
+    level: 6
+    paths:
+        - src
+    excludePaths:
+        - vendor
+    ignoreErrors:
+        # WordPress functions and constants
+        - '#Function [a-zA-Z_]+ not found\.#'
+        - '#Constant [A-Z_]+ not found\.#'
+    bootstrapFiles:
+        - vendor/autoload.php 
