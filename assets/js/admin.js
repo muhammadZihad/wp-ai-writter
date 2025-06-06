@@ -181,27 +181,53 @@ jQuery(document).ready(function($) {
     $('#test-connection').on('click', function() {
         const $btn = $(this);
         const $status = $('#connection-status');
+        const $apiKeyField = $('#api_key');
         const originalText = $btn.text();
         
+        // Get the current API key from the form
+        const apiKey = $apiKeyField.val().trim();
+        
+        if (!apiKey) {
+            $status.removeClass('loading success').addClass('error')
+                .text('✗ Please enter an API key first.')
+                .show();
+            return;
+        }
+        
         $btn.prop('disabled', true).text('Testing...');
-        $status.removeClass('success error').addClass('loading').text('Testing API connection...').show();
+        $status.removeClass('success error').addClass('loading')
+            .text('Testing API connection...').show();
         
         $.ajax({
             url: aiWriter.ajaxUrl,
             type: 'POST',
             data: {
                 action: 'ai_writer_test_connection',
+                api_key: apiKey,
                 nonce: aiWriter.nonce
             },
             success: function(response) {
                 if (response.success) {
-                    $status.removeClass('loading error').addClass('success').text('✓ Connection successful! API is working correctly.');
+                    let message = '✓ ' + response.data.message;
+                    if (response.data.model_info && response.data.model_info.available_models) {
+                        const models = response.data.model_info.available_models;
+                        if (models.length > 0) {
+                            message += ' Available models: ' + models.slice(0, 3).join(', ');
+                            if (models.length > 3) {
+                                message += ' and ' + (models.length - 3) + ' more.';
+                            }
+                        }
+                    }
+                    $status.removeClass('loading error').addClass('success').text(message);
                 } else {
-                    $status.removeClass('loading success').addClass('error').text('✗ Connection failed: ' + (response.data.message || 'Unknown error'));
+                    $status.removeClass('loading success').addClass('error')
+                        .text('✗ ' + (response.data.message || 'Connection test failed.'));
                 }
             },
-            error: function() {
-                $status.removeClass('loading success').addClass('error').text('✗ Connection test failed. Please check your settings.');
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', error);
+                $status.removeClass('loading success').addClass('error')
+                    .text('✗ Connection test failed. Please check your internet connection.');
             },
             complete: function() {
                 $btn.prop('disabled', false).text(originalText);

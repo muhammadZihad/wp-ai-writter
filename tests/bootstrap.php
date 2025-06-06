@@ -126,6 +126,94 @@ if (!function_exists('selected_helper')) {
     }
 }
 
+if (!function_exists('wp_send_json_error')) {
+    function wp_send_json_error($data = null, $status_code = null) {
+        $response = array('success' => false);
+        if (isset($data)) {
+            $response['data'] = $data;
+        }
+        echo json_encode($response);
+        exit;
+    }
+}
+
+if (!function_exists('wp_send_json_success')) {
+    function wp_send_json_success($data = null, $status_code = null) {
+        $response = array('success' => true);
+        if (isset($data)) {
+            $response['data'] = $data;
+        }
+        echo json_encode($response);
+        exit;
+    }
+}
+
+if (!function_exists('wp_verify_nonce')) {
+    function wp_verify_nonce($nonce, $action = -1) {
+        // Mock implementation - always return true for testing
+        return true;
+    }
+}
+
+if (!function_exists('current_user_can')) {
+    function current_user_can($capability) {
+        // Mock implementation - always return true for testing
+        return true;
+    }
+}
+
+if (!function_exists('get_option')) {
+    function get_option($option, $default = false) {
+        // Mock implementation for testing
+        if ($option === 'ai_writer_settings') {
+            return [
+                'api_key' => 'test-api-key',
+                'model' => 'gpt-3.5-turbo',
+            ];
+        }
+        return $default;
+    }
+}
+
+if (!function_exists('sanitize_text_field')) {
+    function sanitize_text_field($str) {
+        return trim(strip_tags($str));
+    }
+}
+
+if (!function_exists('wp_remote_get')) {
+    function wp_remote_get($url, $args = array()) {
+        // Mock implementation for testing
+        return array(
+            'response' => array('code' => 200),
+            'body' => json_encode(array(
+                'data' => array(
+                    array('id' => 'gpt-3.5-turbo'),
+                    array('id' => 'gpt-4'),
+                )
+            ))
+        );
+    }
+}
+
+if (!function_exists('is_wp_error')) {
+    function is_wp_error($thing) {
+        return false; // Mock - never error for testing
+    }
+}
+
+if (!function_exists('wp_remote_retrieve_response_code')) {
+    function wp_remote_retrieve_response_code($response) {
+        return $response['response']['code'] ?? 200;
+    }
+}
+
+if (!function_exists('wp_remote_retrieve_body')) {
+    function wp_remote_retrieve_body($response) {
+        return $response['body'] ?? '';
+    }
+}
+
 if (!defined('ABSPATH')) {
     define('ABSPATH', '/var/www/html/');
 }
