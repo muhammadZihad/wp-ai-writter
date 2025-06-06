@@ -145,11 +145,8 @@ final class Plugin
      */
     public function renderAdminPage(): void
     {
-        $dashboardFile = $this->pluginDir . 'admin/pages/dashboard.php';
-
-        if (file_exists($dashboardFile)) {
-            include_once $dashboardFile;
-        }
+        $dashboardPage = new Admin\DashboardPage();
+        $dashboardPage->render();
     }
 
     /**
@@ -159,11 +156,8 @@ final class Plugin
      */
     public function renderSettingsPage(): void
     {
-        $settingsFile = $this->pluginDir . 'admin/pages/settings.php';
-
-        if (file_exists($settingsFile)) {
-            include_once $settingsFile;
-        }
+        $settingsPage = new Admin\SettingsPage();
+        $settingsPage->render();
     }
 
     /**
