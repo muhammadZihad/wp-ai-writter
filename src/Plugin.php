@@ -82,6 +82,8 @@ final class Plugin
 
         // AJAX actions
         add_action('wp_ajax_ai_writer_test_connection', [$this, 'handleConnectionTest']);
+        add_action('wp_ajax_ai_writer_generate_content', [$this, 'handleContentGeneration']);
+        add_action('wp_ajax_ai_writer_create_post', [$this, 'handlePostCreation']);
 
         // Activation and deactivation hooks
         register_activation_hook($this->pluginFile, [$this, 'activate']);
@@ -328,14 +330,62 @@ final class Plugin
         try {
             // Log that the AJAX handler was called
             error_log('AI Writer: AJAX connection test handler called');
-            
+
             $connectionTest = new Ajax\ConnectionTest();
             $connectionTest->handle();
         } catch (\Throwable $e) {
             // Log any errors
             error_log('AI Writer: Connection test error - ' . $e->getMessage());
             error_log('AI Writer: Stack trace - ' . $e->getTraceAsString());
-            
+
+            wp_send_json_error([
+                'message' => 'An unexpected error occurred: ' . $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Handle AJAX content generation request
+     *
+     * @return void
+     */
+    public function handleContentGeneration(): void
+    {
+        try {
+            // Log that the AJAX handler was called
+            error_log('AI Writer: AJAX content generation handler called');
+
+            $contentGenerator = new Ajax\ContentGenerator();
+            $contentGenerator->handle();
+        } catch (\Throwable $e) {
+            // Log any errors
+            error_log('AI Writer: Content generation error - ' . $e->getMessage());
+            error_log('AI Writer: Stack trace - ' . $e->getTraceAsString());
+
+            wp_send_json_error([
+                'message' => 'An unexpected error occurred: ' . $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Handle AJAX post creation request
+     *
+     * @return void
+     */
+    public function handlePostCreation(): void
+    {
+        try {
+            // Log that the AJAX handler was called
+            error_log('AI Writer: AJAX post creation handler called');
+
+            $postCreator = new Ajax\PostCreator();
+            $postCreator->handle();
+        } catch (\Throwable $e) {
+            // Log any errors
+            error_log('AI Writer: Post creation error - ' . $e->getMessage());
+            error_log('AI Writer: Stack trace - ' . $e->getTraceAsString());
+
             wp_send_json_error([
                 'message' => 'An unexpected error occurred: ' . $e->getMessage()
             ]);

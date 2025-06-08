@@ -162,6 +162,7 @@ final class DashboardPage
                     <?php $this->renderContentTypeField($contentTypes); ?>
                     <?php $this->renderLengthField($lengthOptions); ?>
                     <?php $this->renderToneField($toneOptions); ?>
+                    <?php $this->renderPostStatusField(); ?>
                 </table>
                 
                 <p class="submit">
@@ -273,6 +274,32 @@ final class DashboardPage
                         </option>
                     <?php endforeach; ?>
                 </select>
+            </td>
+        </tr>
+        <?php
+    }
+
+    /**
+     * Render the post status field
+     *
+     * @return void
+     */
+    private function renderPostStatusField(): void
+    {
+        ?>
+        <tr>
+            <th scope="row">
+                <label for="content-post-status"><?php esc_html_e('Post Status', 'ai-writer'); ?></label>
+            </th>
+            <td>
+                <select id="content-post-status" name="post_status">
+                    <option value="draft" selected><?php esc_html_e('Draft', 'ai-writer'); ?></option>
+                    <option value="publish"><?php esc_html_e('Published', 'ai-writer'); ?></option>
+                    <option value="private"><?php esc_html_e('Private', 'ai-writer'); ?></option>
+                </select>
+                <p class="description">
+                    <?php esc_html_e('Choose the status for the created post.', 'ai-writer'); ?>
+                </p>
             </td>
         </tr>
         <?php

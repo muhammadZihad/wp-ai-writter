@@ -33,7 +33,7 @@ final class ConnectionTest
     {
         try {
             error_log('AI Writer: ConnectionTest::handle() started');
-            
+
             // Verify nonce
             if (!$this->verifyNonce()) {
                 error_log('AI Writer: Nonce verification failed');
@@ -74,7 +74,7 @@ final class ConnectionTest
         } catch (\Throwable $e) {
             error_log('AI Writer: ConnectionTest exception - ' . $e->getMessage());
             error_log('AI Writer: Stack trace - ' . $e->getTraceAsString());
-            
+
             $this->sendJsonError([
                 'message' => 'Connection test failed: ' . $e->getMessage()
             ]);
@@ -89,20 +89,20 @@ final class ConnectionTest
     private function verifyNonce(): bool
     {
         $nonce = $_POST['nonce'] ?? '';
-        
+
         if (empty($nonce)) {
             error_log('AI Writer: No nonce provided in request');
             return false;
         }
-        
+
         if (!function_exists('wp_verify_nonce')) {
             error_log('AI Writer: wp_verify_nonce function not available');
             return false;
         }
-        
+
         $result = wp_verify_nonce($nonce, 'ai_writer_nonce');
         error_log('AI Writer: Nonce verification result: ' . ($result ? 'true' : 'false'));
-        
+
         return (bool) $result;
     }
 
