@@ -1,14 +1,31 @@
 {
     "name": "ai-writer/ai-writer",
-    "description": "A WordPress plugin that provides AI-powered writing assistance and content generation tools.",
+    "description": "AI-powered content generation plugin for WordPress that helps you create engaging content using OpenAI's GPT models.",
     "type": "wordpress-plugin",
+    "version": "1.0.0",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Your Name",
-            "email": "your.email@example.com"
+            "name": "Muhammad AR Zihad",
+            "email": "zihad.muhammadar@gmail.com",
+            "role": "Developer"
         }
     ],
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "ai",
+        "content",
+        "writing",
+        "openai",
+        "gpt",
+        "content-generation"
+    ],
+    "homepage": "https://github.com/muhammadZihad/wp-ai-writter",
+    "support": {
+        "issues": "https://github.com/muhammadZihad/wp-ai-writter/issues",
+        "source": "https://github.com/muhammadZihad/wp-ai-writter"
+    },
     "require": {
         "php": ">=8.2"
     },

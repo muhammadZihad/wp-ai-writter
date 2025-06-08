@@ -1,11 +1,11 @@
 === AI Writer ===
-Contributors: yourname
-Tags: ai, content, writing, openai, gpt
+Contributors: muhammadarzihad
+Tags: ai, content, writing, openai, gpt, content-generation, wordpress-plugin
 Requires at least: 5.0
 Tested up to: 6.4
-Requires PHP: 7.4
+Requires PHP: 8.2
 Stable tag: 1.0.0
-License: GPLv2 or later
+License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 AI-powered content generation plugin for WordPress that helps you create engaging content using OpenAI's GPT models.
@@ -23,6 +23,8 @@ AI Writer is a powerful WordPress plugin that leverages artificial intelligence 
 * **Content Management** - Save, edit, and manage generated content
 * **WordPress Integration** - Seamlessly create new posts from generated content
 * **API Configuration** - Easy setup with OpenAI API key management
+* **Modern PHP** - Built with PHP 8.2+ and follows modern coding standards
+* **Object-Oriented Design** - Clean, maintainable code following SOLID principles
 
 **Supported Content Types:**
 * Blog Posts
@@ -38,6 +40,11 @@ AI Writer is a powerful WordPress plugin that leverages artificial intelligence 
 * Formal
 * Creative
 
+**Technical Requirements:**
+* WordPress 5.0 or higher
+* PHP 8.2 or higher
+* OpenAI API key
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/ai-writer` directory, or install the plugin through the WordPress plugins screen directly.
@@ -46,11 +53,20 @@ AI Writer is a powerful WordPress plugin that leverages artificial intelligence 
 4. Add your OpenAI API key in the Settings page.
 5. Start generating content from the Dashboard!
 
+**Note:** This plugin requires PHP 8.2 or higher. Please ensure your server meets this requirement before installation.
+
 == Frequently Asked Questions ==
 
 = Do I need an OpenAI account? =
 
 Yes, you need an OpenAI account and API key to use this plugin. You can sign up at https://platform.openai.com
+
+= What are the system requirements? =
+
+* WordPress 5.0 or higher
+* PHP 8.2 or higher
+* Valid OpenAI API key
+* Internet connection for API requests
 
 = What AI models are supported? =
 
@@ -63,6 +79,10 @@ The limits depend on your OpenAI account and API usage limits. The plugin itself
 = Can I customize the generated content? =
 
 Yes, you can edit the generated content before saving or creating posts. The plugin also allows you to adjust tone, length, and content type.
+
+= Is the plugin compatible with my PHP version? =
+
+This plugin requires PHP 8.2 or higher. It uses modern PHP features and follows current coding standards for better performance and security.
 
 == Screenshots ==
 
@@ -79,11 +99,14 @@ Yes, you can edit the generated content before saving or creating posts. The plu
 * OpenAI API integration
 * Admin dashboard and settings
 * Content management features
+* Modern PHP 8.2+ codebase
+* Object-oriented design with SOLID principles
+* PSR-12 coding standards compliance
 
 == Upgrade Notice ==
 
 = 1.0.0 =
-Initial release of AI Writer plugin.
+Initial release of AI Writer plugin. Requires PHP 8.2 or higher.
 
 == Configuration ==
 
@@ -96,9 +119,23 @@ After activating the plugin:
 5. Test the API connection
 6. Start generating content from the Dashboard
 
+== Development ==
+
+This plugin is built with modern PHP practices:
+
+* **PHP 8.2+** - Uses latest PHP features and syntax
+* **PSR-12** - Follows PHP coding standards
+* **Object-Oriented** - Clean, maintainable architecture
+* **SOLID Principles** - Well-structured, extensible code
+* **Composer** - Modern dependency management
+* **PHPUnit** - Comprehensive testing
+* **PHPStan** - Static analysis for code quality
+
 == Support ==
 
-For support and documentation, please visit our website or contact us through the plugin's support channels.
+For support and documentation:
+* GitHub Issues: https://github.com/muhammadarzihad/ai-writer/issues
+* Source Code: https://github.com/muhammadarzihad/ai-writer
 
 == Privacy ==
 

@@ -1,18 +1,25 @@
 <?php
 /**
  * Plugin Name: AI Writer
- * Plugin URI: https://example.com/ai-writer
- * Description: A WordPress plugin that provides AI-powered writing assistance and content generation tools.
+ * Plugin URI: https://github.com/muhammadZihad/wp-ai-writter
+ * Description: AI-powered content generation plugin for WordPress that helps you create engaging content using OpenAI's GPT models.
  * Version: 1.0.0
- * Author: Your Name
- * Author URI: https://example.com
+ * Author: Muhammad AR Zihad
+ * Author URI: https://heyzihad.com
  * Text Domain: ai-writer
  * Domain Path: /languages
  * Requires at least: 5.0
  * Tested up to: 6.4
  * Requires PHP: 8.2
- * License: GPL v2 or later
+ * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Network: false
+ * 
+ * @package AiWriter
+ * @version 1.0.0
+ * @author Muhammad AR Zihad
+ * @license GPL-2.0-or-later
+ * @since 1.0.0
  */
 
 declare(strict_types=1);
