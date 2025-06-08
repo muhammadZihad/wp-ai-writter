@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
         
         // Show loading state
         $generateBtn.prop('disabled', true).addClass('ai-writer-loading');
-        $generateBtn.find('span').text('Generating...');
+        $generateBtn.find('.button-text').text('Generating...');
         $generateBtn.find('.dashicons').removeClass('dashicons-edit').addClass('dashicons-update spin');
         
         // Hide any previous content
@@ -182,7 +182,7 @@ jQuery(document).ready(function($) {
             complete: function() {
                 // Remove loading state
                 $generateBtn.prop('disabled', false).removeClass('ai-writer-loading');
-                $generateBtn.find('span').text('Generate Content');
+                $generateBtn.find('.button-text').text('Generate Content');
                 $generateBtn.find('.dashicons').removeClass('dashicons-update spin').addClass('dashicons-edit');
                 
                 // Hide progress indicator
@@ -202,32 +202,39 @@ jQuery(document).ready(function($) {
         }
         
         const $btn = $(this);
-        const originalText = $btn.text();
+        const originalText = $btn.find('.button-text').text();
         
-        $btn.prop('disabled', true).text('Copying...');
+        $btn.prop('disabled', true);
+        $btn.find('.button-text').text('Copying...');
         
         copyToClipboard(content).then(function(success) {
             if (success) {
-                $btn.text('Copied!').addClass('button-primary');
+                $btn.find('.button-text').text('Copied!');
+                $btn.addClass('button-primary');
                 showNotification('Content copied to clipboard successfully!', 'success');
                 
                 setTimeout(function() {
-                    $btn.text(originalText).removeClass('button-primary').prop('disabled', false);
+                    $btn.find('.button-text').text(originalText);
+                    $btn.removeClass('button-primary').prop('disabled', false);
                 }, 2000);
             } else {
-                $btn.text('Failed').addClass('button-secondary');
+                $btn.find('.button-text').text('Failed');
+                $btn.addClass('button-secondary');
                 showNotification('Failed to copy to clipboard. Please copy manually.', 'error');
                 
                 setTimeout(function() {
-                    $btn.text(originalText).removeClass('button-secondary').prop('disabled', false);
+                    $btn.find('.button-text').text(originalText);
+                    $btn.removeClass('button-secondary').prop('disabled', false);
                 }, 2000);
             }
         }).catch(function() {
-            $btn.text('Failed').addClass('button-secondary');
+            $btn.find('.button-text').text('Failed');
+            $btn.addClass('button-secondary');
             showNotification('Failed to copy to clipboard. Please copy manually.', 'error');
             
             setTimeout(function() {
-                $btn.text(originalText).removeClass('button-secondary').prop('disabled', false);
+                $btn.find('.button-text').text(originalText);
+                $btn.removeClass('button-secondary').prop('disabled', false);
             }, 2000);
         });
     });
@@ -243,9 +250,10 @@ jQuery(document).ready(function($) {
         }
         
         const $btn = $(this);
-        const originalText = $btn.text();
+        const originalText = $btn.find('.button-text').text();
         
-        $btn.prop('disabled', true).text('Saving...');
+        $btn.prop('disabled', true);
+        $btn.find('.button-text').text('Saving...');
         
         $.ajax({
             url: aiWriter.ajaxUrl,
@@ -258,9 +266,11 @@ jQuery(document).ready(function($) {
             },
             success: function(response) {
                 if (response.success) {
-                    $btn.text('Saved!').addClass('button-primary');
+                    $btn.find('.button-text').text('Saved!');
+                    $btn.addClass('button-primary');
                     setTimeout(function() {
-                        $btn.text(originalText).removeClass('button-primary');
+                        $btn.find('.button-text').text(originalText);
+                        $btn.removeClass('button-primary');
                     }, 2000);
                 } else {
                     alert(response.data.message || 'Failed to save content.');
@@ -291,10 +301,11 @@ jQuery(document).ready(function($) {
         }
         
         const $btn = $(this);
-        const originalText = $btn.text();
+        const originalText = $btn.find('.button-text').text();
         
         // Show loading state
-        $btn.prop('disabled', true).text('Creating Post...');
+        $btn.prop('disabled', true);
+        $btn.find('.button-text').text('Creating Post...');
         
         // Show confirmation dialog
         const selectedStatus = $('#content-post-status').val() || 'draft';
@@ -302,7 +313,8 @@ jQuery(document).ready(function($) {
         const confirmed = confirm('Create a new post with the title "' + generatedTitle + '"?\n\nThe post will be created as: ' + statusText);
         
         if (!confirmed) {
-            $btn.prop('disabled', false).text(originalText);
+            $btn.prop('disabled', false);
+            $btn.find('.button-text').text(originalText);
             return;
         }
         
@@ -349,7 +361,8 @@ jQuery(document).ready(function($) {
                 showNotification(errorMessage, 'error');
             },
             complete: function() {
-                $btn.prop('disabled', false).text(originalText);
+                $btn.prop('disabled', false);
+                $btn.find('.button-text').text(originalText);
             }
         });
     });

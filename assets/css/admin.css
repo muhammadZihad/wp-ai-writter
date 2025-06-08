@@ -122,6 +122,14 @@
     gap: 5px;
 }
 
+.content-actions .button .dashicons {
+    margin-right: 0;
+}
+
+.content-actions .button .button-text {
+    display: inline-block;
+}
+
 /* Settings Page Styles */
 .ai-writer-settings-info {
     background: #fff;
@@ -197,10 +205,18 @@
     font-size: 14px;
     height: auto;
     padding: 8px 16px;
+    transition: opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
 }
 
 #generate-btn .dashicons {
     margin-right: 5px;
+    transition: transform 0.2s ease;
+}
+
+#generate-btn .button-text {
+    display: inline-block;
 }
 
 #generate-btn:disabled {
@@ -213,22 +229,15 @@
     position: relative;
 }
 
-.ai-writer-loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    width: 16px;
-    height: 16px;
-    margin-top: -8px;
-    border: 2px solid #ccc;
-    border-top: 2px solid #0073aa;
-    border-radius: 50%;
+/* Ensure only the icon spins, not the text */
+.ai-writer-loading .dashicons.spin {
     animation: spin 1s linear infinite;
+    transform-origin: center;
 }
 
 .dashicons.spin {
     animation: spin 1s linear infinite;
+    transform-origin: center;
 }
 
 @keyframes spin {

@@ -168,7 +168,7 @@ final class DashboardPage
                 <p class="submit">
                     <button type="submit" class="button button-primary" id="generate-btn">
                         <span class="dashicons dashicons-update"></span>
-                        <?php esc_html_e('Generate Content', 'ai-writer'); ?>
+                        <span class="button-text"><?php esc_html_e('Generate Content', 'ai-writer'); ?></span>
                     </button>
                 </p>
             </form>
@@ -321,15 +321,15 @@ final class DashboardPage
             <div class="content-actions">
                 <button type="button" class="button" id="copy-content">
                     <span class="dashicons dashicons-clipboard"></span>
-                    <?php esc_html_e('Copy to Clipboard', 'ai-writer'); ?>
+                    <span class="button-text"><?php esc_html_e('Copy to Clipboard', 'ai-writer'); ?></span>
                 </button>
                 <button type="button" class="button" id="save-content">
                     <span class="dashicons dashicons-saved"></span>
-                    <?php esc_html_e('Save Content', 'ai-writer'); ?>
+                    <span class="button-text"><?php esc_html_e('Save Content', 'ai-writer'); ?></span>
                 </button>
                 <button type="button" class="button button-primary" id="create-post">
                     <span class="dashicons dashicons-plus-alt"></span>
-                    <?php esc_html_e('Create New Post', 'ai-writer'); ?>
+                    <span class="button-text"><?php esc_html_e('Create New Post', 'ai-writer'); ?></span>
                 </button>
             </div>
         </div>
